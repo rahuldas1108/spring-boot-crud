@@ -1,0 +1,18 @@
+package com.example.springbootcrud.service;
+
+import com.example.springbootcrud.dto.Employee;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface EmployeeService {
+    Optional<Employee> getEmployee(int empId);
+
+    List<Employee> getAllEmployee();
+
+    Employee createEmployee(Employee employee);
+
+    Employee updateEmployee(Employee employee);
+
+    void deleteEmployee(int empId);
+}
