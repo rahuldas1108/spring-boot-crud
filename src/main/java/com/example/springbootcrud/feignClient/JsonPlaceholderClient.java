@@ -17,3 +17,4 @@ public interface JsonPlaceholderClient {
     @RequestMapping (method = RequestMethod.GET, value = "/posts/{postId}", produces = "application/json")
     Post getPostById(@PathVariable ("postId") long id);
 }
+//https://dummyjson.com/users/2

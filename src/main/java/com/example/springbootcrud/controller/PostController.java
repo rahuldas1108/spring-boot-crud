@@ -1,6 +1,7 @@
 package com.example.springbootcrud.controller;
 
 import com.example.springbootcrud.dto.Post;
+import com.example.springbootcrud.dto.User;
 import com.example.springbootcrud.exception.NotFoundException;
 import com.example.springbootcrud.service.EmployeeServiceImpl;
 import com.example.springbootcrud.service.PostService;
@@ -37,4 +38,14 @@ public class PostController {
         Post post= postService.getPostById(id);
         return new ResponseEntity<>(post,HttpStatus.OK);
     }
+
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable("id") long id) throws NotFoundException {
+        logger.info("Sending request to service layer for user");
+        User user= postService.getUserById(id);
+        return new ResponseEntity<>(user,HttpStatus.OK);
+    }
+
+
 }
