@@ -8,6 +8,7 @@ public class Company {
     private Address address;
     private String name;
 
+    public Company(){}
     public Company(Address address, String name) {
         this.address = address;
         this.name = name;

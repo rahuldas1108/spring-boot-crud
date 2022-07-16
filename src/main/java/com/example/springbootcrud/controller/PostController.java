@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +42,7 @@ public class PostController {
 
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") long id) throws NotFoundException {
+    public ResponseEntity<User> getUserById(@PathVariable("id") long id) throws NotFoundException, URISyntaxException {
         logger.info("Sending request to service layer for user");
         User user= postService.getUserById(id);
         return new ResponseEntity<>(user,HttpStatus.OK);

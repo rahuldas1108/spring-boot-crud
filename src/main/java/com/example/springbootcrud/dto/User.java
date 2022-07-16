@@ -13,6 +13,8 @@ public class User {
     private Address address;
     private Company company;
 
+    public User() {
+    }
     public User(Long id, String firstName, String lastName, Address address, Company company) {
         this.id = id;
         this.firstName = firstName;
