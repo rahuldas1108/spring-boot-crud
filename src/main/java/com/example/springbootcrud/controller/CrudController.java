@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,13 +35,13 @@ public class CrudController {
         return new ResponseEntity<List<Employee>>(employees,HttpStatus.OK);
     }
     @PostMapping("/emp")
-    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
+    public ResponseEntity<Employee> addEmployee(@Valid @RequestBody Employee employee){
         logger.info("Sending request to service layer");
         Employee emp= employeeService.createEmployee(employee);
         return new ResponseEntity<Employee>(emp,HttpStatus.CREATED);
     }
     @PutMapping("/emp")
-    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) throws NotFoundException {
+    public ResponseEntity<Employee> updateEmployee(@Valid @RequestBody  Employee employee) throws NotFoundException {
         logger.info("Sending request to service layer");
         Employee emp= employeeService.updateEmployee(employee);
         return new ResponseEntity<Employee>(emp,HttpStatus.ACCEPTED);

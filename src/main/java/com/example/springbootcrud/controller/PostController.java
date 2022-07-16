@@ -1,6 +1,7 @@
 package com.example.springbootcrud.controller;
 
 import com.example.springbootcrud.dto.Post;
+import com.example.springbootcrud.dto.User;
 import com.example.springbootcrud.exception.NotFoundException;
 import com.example.springbootcrud.service.EmployeeServiceImpl;
 import com.example.springbootcrud.service.PostService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,4 +39,14 @@ public class PostController {
         Post post= postService.getPostById(id);
         return new ResponseEntity<>(post,HttpStatus.OK);
     }
+
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable("id") long id) throws NotFoundException, URISyntaxException {
+        logger.info("Sending request to service layer for user");
+        User user= postService.getUserById(id);
+        return new ResponseEntity<>(user,HttpStatus.OK);
+    }
+
+
 }

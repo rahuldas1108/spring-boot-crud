@@ -1,23 +1,32 @@
 package com.example.springbootcrud.dto;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Employee")
 public class Employee {
     @Id
+    @NotNull(message = "Employee ID shouldn't be null")
     @Column(name="EmployeeID")
     private int id;
+    @NotBlank(message = "Name shouldn't be null")
     @Column(name="Name")
     private String name;
+    @NotEmpty(message = "City shouldn't be null")
     @Column(name="City")
     private String city;
     @Column(name="Salary")
     private float salary;
+    @NotBlank(message = "Phone Number shouldn't be null")
     @Column(name="PhoneNumber")
     private String phoneNo;
 
