@@ -11,4 +11,6 @@ Scenario: Need to create a jar to deploy from a older commit of main branch
 
     git checkout main //checkout the main branch
     git checkout <commit_no> // this will checkout the particular commit no. code
-    
+    //now HEAD points to the commit number
+    git reset --hard HEAD //reset
+    git checkout -b newBranch// this will create a new branch in local
