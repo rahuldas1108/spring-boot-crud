@@ -5,6 +5,9 @@ import com.example.springbootcrud.dto.User;
 import com.example.springbootcrud.exception.NotFoundException;
 import com.example.springbootcrud.service.EmployeeServiceImpl;
 import com.example.springbootcrud.service.PostService;
+import com.example.springbootcrud.service.RestTemplateImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,8 @@ public class PostController {
     private static final Logger logger = LoggerFactory.getLogger(PostController.class);
     @Autowired
     private PostService postService;
+    @Autowired
+    RestTemplateImpl restTemplateimpl;
 
     @GetMapping("/posts")
     public ResponseEntity<List<Post>> getAllPosts() {
@@ -48,5 +53,15 @@ public class PostController {
         return new ResponseEntity<>(user,HttpStatus.OK);
     }
 
+    @GetMapping("/testRest")
+    public void getuserRest() throws JsonProcessingException {
+        logger.info("Sending request to service layer for user for testing rest template");
+        restTemplateimpl.restService();
+    }
 
+    @GetMapping("/testRestDummy")
+    public void getComments() throws JSONException {
+        logger.info("Sending request to service layer for user for testing rest template");
+        restTemplateimpl.dummyComments();
+    }
 }
